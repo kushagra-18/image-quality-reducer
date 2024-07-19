@@ -6,6 +6,8 @@ import { Status } from './interface/status.enum';
 import { ImageProcessor } from './image.processor';
 import axios from 'axios';
 import * as fs from 'fs';
+import * as path from 'path';
+
 
 @Injectable()
 export class ImageService {
