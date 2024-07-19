@@ -101,17 +101,22 @@ export class ImageService {
 
     const filePath = image.csv_output_path;
 
-    if (!fs.existsSync(filePath)) {
+    const publicFilePath = path.resolve(__dirname, '..', '..', 'public', filePath);
+
+    if (!fs.existsSync(publicFilePath)) {
       throw new NotFoundException('No data found');
     }
 
     const fileName = image.csv_name;
 
+    const fileUrl = process.env.APP_URL + filePath;
+
     return {
-      filePath,
+      fileUrl,
       fileName,
     };
   }
+
 
   async hitWebhook(url: string) {
     const response = await axios.post(url);
